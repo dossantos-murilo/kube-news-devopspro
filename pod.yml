@@ -1,0 +1,25 @@
+apiVersion: v1 # Grupos de APIs para este objeto. $ kubectl api-resources | grep pods
+kind: Pod # Tipo de objeto a ser criado.
+metadata: # Metadados do objeto.
+  name: meupod-azul
+  labels:
+    cor: azul
+spec: # Especificações do objeto.
+  containers:
+  - name: site
+    image: fabricioveronez/web-page:blue
+    ports:
+    -  containerPort: 80
+---
+apiVersion: v1 # Grupos de APIs para este objeto. $ kubectl api-resources | grep pods
+kind: Pod # Tipo de objeto a ser criado.
+metadata: # Metadados do objeto.
+  name: meupod-verde
+  labels:
+    cor: verde
+spec: # Especificações do objeto.
+  containers:
+  - name: site
+    image: fabricioveronez/web-page:blue
+    ports:
+    -  containerPort: 80

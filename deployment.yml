@@ -1,0 +1,33 @@
+apiVersion: apps/v1 # kubectl api-resources | grep replicasets
+kind: Deployment
+metadata:
+  name: meudeployment
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata: # Metadados do objeto.
+      labels:
+        app: web
+    spec: # Especificações do objeto.
+      containers:
+      - name: site
+        image: fabricioveronez/web-page:green
+        ports:
+        -  containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: web-page
+spec:
+  selector:
+    app: web
+  ports:
+    - port: 80
+      protocol: TCP
+      nodePort: 30000
+  type: NodePort
