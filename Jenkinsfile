@@ -22,9 +22,9 @@ pipeline {
             }
         }
 
-        satge ('Deploy Kubernetes') {
+        stage ('Deploy Kubernetes') {
             steps{
-                withKubeconfig ([credentialsId: 'kubeconfig']) {
+                withKubeConfig ([credentialsId: 'kubeconfig']) {
                      sh 'kubectl apply -f ./kube-news/src/k8s/deployment.yml'
                 }
             }
