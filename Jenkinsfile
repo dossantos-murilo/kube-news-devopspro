@@ -21,5 +21,13 @@ pipeline {
                 }
             }
         }
+
+        satge ('Deploy Kubernetes') {
+            steps{
+                withKubeconfig ([credentialsId: 'kubeconfig']) {
+                     sh 'kubectl apply -f ./kube-news/src/k8s/deployment.yml'
+                }
+            }
+        }
     }
 }
